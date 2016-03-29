@@ -13,8 +13,8 @@ function notesConfig($stateProvider)
       .state('notes',
         {
           url: '/notes',
-          template: '<h1>Notely</h1><p>{{ message }}</p><div ui-view></div>',
-          //templateUrl: '/notes/notes.html',
+          //template: '<h1>Notely</h1><p>{{ message }}</p><div ui-view></div>',
+          templateUrl: '/notes/notes.html',
           controller: NotesController
         })
         //child of notes
@@ -24,9 +24,9 @@ function notesConfig($stateProvider)
         });
   }
 
-  NotesController.$inject=['$scope'];
-  function NotesController($scope)
+  NotesController.$inject=['$state'];
+  function NotesController($state)
   {
-    $scope.message="I <3 Angular";
+    $state.go('notes.form');
   }
 })();

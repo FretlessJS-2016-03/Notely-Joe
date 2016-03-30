@@ -6,15 +6,22 @@
     NotesService.$inject=['$http'];
     function NotesService($http)
     {
-      this.fetch = function ()
+      var _this = this;
+      _this.fetch = function (callback)
       {
         //async - this will not wait before going to the next line
+        // .success will wait until get finishes
         $http.get('http://localhost:3030')
-          .success(function()
+          .success(function(notesData)
             {
-              console.log('It finished!');
+              _this.notes = notesData;
+              callback();
             });
-          
+
       };
+      _this.getNotes = function()
+      {
+        return _this.notes;
+      }
     }
   }());

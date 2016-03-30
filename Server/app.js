@@ -1,6 +1,13 @@
 var express = require('express');
 var notelyServerApp = express();
 
+// Cross-Origin Resource Sharing (CORS) middleware
+notelyServerApp.use(function(req, res, next)
+  {
+    res.header('Access-Control-Allow-Origin', '*');
+    next();
+  });
+
 notelyServerApp.get('/', function(req, res)
   {
     res.json([
@@ -11,6 +18,10 @@ notelyServerApp.get('/', function(req, res)
       {
         title: 'Another hardcoded note',
         body_html: "Ain't life grand!"
+      },
+      {
+        title: 'Yet Another hardcoded note',
+        body_html: "THis is getting monotonous!"
       }
     ]);
 

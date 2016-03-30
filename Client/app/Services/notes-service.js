@@ -7,6 +7,8 @@
     function NotesService($http)
     {
       var _this = this;
+      _this.notes = [];
+
       _this.fetch = function (callback)
       {
         //async - this will not wait before going to the next line

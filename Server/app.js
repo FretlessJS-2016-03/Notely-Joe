@@ -12,11 +12,11 @@ notelyServerApp.get('/', function(req, res)
   {
     res.json([
       {
-        title: 'Harcdoded Note',
+        title: 'Edited Harcdoded Note',
         body_html: 'Cool note.  Aww shucks!'
       },
       {
-        title: 'Another hardcoded note',
+        title: 'Another edited hardcoded note',
         body_html: "Ain't life grand!"
       },
       {

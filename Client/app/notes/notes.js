@@ -4,19 +4,19 @@
   ])
     .config(notesConfig);
 
-notesConfig.$inject=['$stateProvider'];
+  notesConfig.$inject=['$stateProvider'];
 
-function notesConfig($stateProvider)
+  function notesConfig($stateProvider)
   {
     $stateProvider
 
       .state('notes',
-        {
-          url: '/notes',
+      {
+        url: '/notes',
           //template: '<h1>Notely</h1><p>{{ message }}</p><div ui-view></div>',
-          templateUrl: '/notes/notes.html',
-          controller: NotesController
-        })
+        templateUrl: '/notes/notes.html',
+        controller: NotesController
+      })
         //child of notes
         .state('notes.form',{
           url: '/:noteId',
@@ -29,8 +29,8 @@ function notesConfig($stateProvider)
   {
     NotesService.fetch(function()
       {
-        $scope.notes = NotesService.getNotes();
-      });
+      $scope.notes = NotesService.getNotes();
+    });
     $state.go('notes.form');
   }
 })();

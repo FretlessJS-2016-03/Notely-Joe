@@ -1,0 +1,32 @@
+{
+    "env": {
+        "node": true
+    },
+    "extends": "eslint:recommended",
+    "rules": {
+        "indent": [
+            "error",
+            2
+        ],
+        "quotes": [
+            "warn",
+            "single"
+        ],
+        "semi": [
+            "error",
+            "always"
+        ],
+        "dot-notation": [
+          "warn"
+        ],
+        "eqeqeq": [
+          "error"
+        ],
+        "no-console": [
+          "warn"
+        ],
+        "no-implicit-globals": [
+          "error"
+        ]
+    }
+}

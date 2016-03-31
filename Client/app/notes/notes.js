@@ -24,13 +24,17 @@
   function NotesController($scope, $state, NotesService) {
 
     $scope.note = {};
-    
+
     NotesService.fetch().then(function() {
       $scope.notes = NotesService.getNotes();
     });
 
     $scope.save = function(){
       NotesService.create($scope.note);
+    };
+
+    $scope.clearForm = function() {
+      $scope.note = {};
     };
 
     $state.go('notes.form');

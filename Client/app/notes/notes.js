@@ -1,6 +1,7 @@
 (function() {
   angular.module('notely.notes', [
-    'ui.router'
+    'ui.router',
+    'textAngular'
   ])
   .config(notesConfig);
 
@@ -12,7 +13,6 @@
         url: '/notes',
         templateUrl: '/notes/notes.html',
         controller: NotesController,
-        //resolve provides controller something it needs before controller runs
         resolve: {
           notesLoaded: function(NotesService) {
             return NotesService.fetch();
@@ -30,23 +30,24 @@
   NotesController.$inject = ['$scope', '$state', 'NotesService'];
   function NotesController($scope, $state, NotesService) {
     $scope.notes = NotesService.getNotes();
-
     $state.go('notes.form');
   }
 
   NotesFormController.$inject = ['$scope', '$state', 'NotesService'];
-  function NotesFormController($scope, $state, NotesService){
-    $scope.note  = NotesService.findById($state.params.noteId); //the note with that ID
-
-    $scope.save = function(){
+  function NotesFormController($scope, $state, NotesService) {
+    $scope.note = NotesService.findById($state.params.noteId);
+    $scope.save = function() {
       if ($scope.note._id) {
         NotesService.update($scope.note);
       }
-      else{
+      else {
         NotesService.create($scope.note);
       }
     };
-
+    $scope.delete = function() {
+      NotesService.delete($scope.note).then(function() {
+        $state.go('notes.form', { noteId: undefined });
+      });
+    };
   }
-
 })();

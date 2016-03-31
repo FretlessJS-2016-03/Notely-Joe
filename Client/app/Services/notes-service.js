@@ -41,8 +41,19 @@
           body_html: note.body_html
         }
       }).then(function(response) {
-        _this.notes.unshift(response.data.note);
+        _this.replaceNote(response.data.note);
       });
+    };
+
+    _this.replaceNote = function(updatedNote) {
+      for (var i = 0; i < _this.notes.length; i++) {
+        if (_this.notes[i]._id === updatedNote._id) {
+          _this.notes[i] = updatedNote;
+          //another way to do this is below
+          //_this.notes.splice(i, 1, updatedNote);
+          return;
+        }
+      }
     };
 
     _this.findById = function(noteId) {

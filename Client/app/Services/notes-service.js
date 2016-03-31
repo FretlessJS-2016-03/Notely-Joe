@@ -34,5 +34,15 @@
       });
     };
 
+    _this.findById = function(noteId) {
+      for (var i = 0; i < _this.notes.length; i++) {
+        //if ids match return note
+        if (_this.notes[i]._id === noteId) {
+          return _this.notes[i];
+        }
+      }
+      return {};
+    };
+
   }
 }());

@@ -27,6 +27,7 @@
 
     NotesService.fetch().then(function() {
       $scope.notes = NotesService.getNotes();
+      $scope.note  = NotesService.findById($state.params.noteId); //the note with that ID
     });
 
     $scope.save = function(){
@@ -37,6 +38,6 @@
       $scope.note = {};
     };
 
-    $state.go('notes.form');
+    //$state.go('notes.form');
   }
 })();

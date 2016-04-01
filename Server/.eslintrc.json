@@ -8,22 +8,29 @@
             "error",
             2
         ],
+        "linebreak-style": [
+            "error",
+            "unix"
+        ],
         "quotes": [
-            "warn",
+            "error",
             "single"
         ],
         "semi": [
             "error",
             "always"
         ],
-        "dot-notation": [
+        "no-console": [
           "warn"
+        ],
+        "dot-notation": [
+          "error"
         ],
         "eqeqeq": [
           "error"
         ],
-        "no-console": [
-          "warn"
+        "no-alert": [
+          "error"
         ],
         "no-implicit-globals": [
           "error"
